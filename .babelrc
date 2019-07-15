@@ -1,0 +1,19 @@
+{
+	"presets": [
+		"env",
+		"react",
+		"stage-2"
+	],
+	"plugins": [
+		"transform-runtime",
+		"transform-decorators-legacy",
+		// "dynamic-import-webpack", 解决node低版本不支持import()
+		[
+			"import",
+			{
+				"libraryName": "antd",
+				"style": true
+			}
+		]
+	]
+}

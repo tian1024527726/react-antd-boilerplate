@@ -1,0 +1,73 @@
+@import '~antd/lib/style/themes/default.less';
+
+.content {
+  position: relative;
+  min-height: 100%;
+  background: #fff;
+
+  :global {
+    .ant-list-item {
+      span {
+        flex: 1;
+      }
+    }
+  }
+}
+
+.blockChecbox {
+  display: flex;
+
+  .item {
+    position: relative;
+    margin-right: 16px;
+    border-radius: @border-radius-base;
+    cursor: pointer;
+
+    img {
+      width: 48px;
+    }
+  }
+
+  .selectIcon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 15px;
+    padding-left: 24px;
+    font-weight: bold;
+    font-size: 14px;
+    color: @primary-color;
+  }
+}
+
+.title {
+  margin-bottom: 12px;
+  font-size: 14px;
+  line-height: 22px;
+  color: @heading-color;
+}
+
+.handle {
+	position: absolute;
+  z-index: 0;
+  top: 240px;
+  right: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 4px 0 0 4px;
+  font-size: 16px;
+  text-align: center;
+  background: @primary-color;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.productionHint {
+  margin-top: 16px;
+  font-size: 12px;
+}
