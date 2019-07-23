@@ -74,7 +74,7 @@ const clientWebpackConfig = {
 					{
 						loader: 'url-loader',
 						options: {
-							name: 'img/[name].[ext]',
+							name: 'images/[name].[ext]',
 							limit: 2048,
 							fallback: 'file-loader'
 						}
@@ -84,6 +84,15 @@ const clientWebpackConfig = {
 			{
 				test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
 				use: 'url-loader',
+			},
+			{
+				test: /\.(mp3)(\?.*)?$/,
+				loader: 'url-loader',
+				options: {
+					name: 'audios/[name].[ext]',
+					limit: 10,
+					fallback: 'file-loader'
+				}
 			},
 			{
 				test: /\.html$/,
