@@ -63,9 +63,11 @@ class BasicLayout extends React.Component {
 				contentWidth,
 				fixSiderbar,
 				layout: PropsLayout,
+			},
+			globalAction:{
+				changeLayoutCollapsed
 			}
 		} = this.props;
-		const { changeLayoutCollapsed } = this.props.globalAction;
 		const isTop = PropsLayout === 'topmenu';
 		const contentStyle = !fixedHeader ? { paddingTop: 0 } : {};
 		const layout = (

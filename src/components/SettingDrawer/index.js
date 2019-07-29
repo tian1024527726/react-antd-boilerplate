@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Select, message, Drawer, List, Switch, Divider, Icon, Button, Alert, Tooltip } from 'antd';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import inject from '@inject';
 import omit from 'omit.js';
+import inject from '@inject';
 import styles from './index.module.less';
 import ThemeColor from './themeColor';
 import BlockCheckbox from './blockCheckbox';

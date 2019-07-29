@@ -19,13 +19,13 @@ module.exports = {
 		'react/prop-types': 0,
 		'react/forbid-prop-types': 0,
 		'react/jsx-one-expression-per-line': 0,
-		"react/jsx-indent": [
+		'react/jsx-indent': [
 			0,
-			"tab"
+			'tab'
 		],
-		"react/jsx-indent-props": [
+		'react/jsx-indent-props': [
 			0,
-			"tab"
+			'tab'
 		],
 		'import/no-unresolved': 0,
 		'import/no-extraneous-dependencies': [
@@ -36,16 +36,19 @@ module.exports = {
 			},
 		],
 		'jsx-a11y/no-noninteractive-element-interactions': 0,
+		'jsx-a11y/label-has-associated-control': 0,
 		'jsx-a11y/click-events-have-key-events': 0,
 		'jsx-a11y/no-static-element-interactions': 0,
+		'jsx-a11y/heading-has-content': 0,
 		'jsx-a11y/anchor-is-valid': 0,
+		'jsx-a11y/anchor-has-content': 0,
 		'linebreak-style': 0,
 		'no-underscore-dangle': 0,
 		'no-console': 0,
-		"import/extensions": 0,
-		"import/prefer-default-export": 0,
-		"consistent-return": 0,
-		"global-require": 0
+		'import/extensions': 0,
+		'import/prefer-default-export': 0,
+		'consistent-return': 0,
+		'global-require': 0
 	},
 	settings: {
 		polyfills: ['fetch', 'Promise', 'url', 'object-assign'],

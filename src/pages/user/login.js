@@ -137,7 +137,7 @@ class LoginPage extends Component {
 						<Checkbox checked={autoLogin} onChange={this.changeAutoLogin}>
 							记住密码
 						</Checkbox>
-						<a style={{ float: 'right' }} href="">
+						<a style={{ float: 'right' }} href="#">
 							忘记密码
 						</a>
 					</div>

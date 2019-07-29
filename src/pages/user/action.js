@@ -1,10 +1,10 @@
 import { message } from 'antd';
-import history from '@history';
+import CryptoJS from 'crypto-js';
 import { setItem } from '@common/utils/storage';
 import { setAuthority } from '@/utils/authority';
 import { reloadAuthorized } from '@/utils/Authorized';
 import userService from '@/service/user';
-import CryptoJS from 'crypto-js';
+import history from '@history';
 import * as type from './constants';
 
 const updateData = data => ({

@@ -1,5 +1,5 @@
-import defaultSettings from '@/defaultSettings';
 import { message } from 'antd'
+import defaultSettings from '@/defaultSettings';
 
 const GET_SETTING = 'setting/GET_SETTING';
 const CHANGE_SETTING = 'setting/CHANGE_SETTING';

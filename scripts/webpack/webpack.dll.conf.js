@@ -9,7 +9,6 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.conf');
 const config = require('../../config');
-const utils = require('../tools/utils');
 const generateDllMap = require('../tools/generateDllMap')
 
 const dlls = config.dlls;
@@ -19,13 +18,6 @@ const dllEntry = dlls.dllPlugin.entry;
 const outputPath = path.resolve(dllConfig.buildPath);
 const outputPathMap = path.resolve(dllConfig.buildPath, '[name].json');
 const isDev = process.env.NODE_ENV === 'development';
-const {
-	postCssLoader,
-	styleLoader,
-	sassLoader,
-	lessLoader,
-	cssLoader,
-} = utils.loadersConfig;
 
 const plugins = [
 	//dll插件

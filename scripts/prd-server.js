@@ -1,6 +1,7 @@
 const config = require('../config')
 const express = require('express')
 const portfinder = require('portfinder')
+const compression = require('compression')
 const chalk = require('chalk')
 const app = express();
 const opn = require('opn') // open模块,打开文件和url等
@@ -8,6 +9,7 @@ const ip = require('ip') // 获取本地ip模块
 
 const webroot = config.paths.output;
 
+app.use(compression())
 app.use(express.static(webroot))
 const port = process.env.PORT || 3002
 

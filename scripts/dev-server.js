@@ -40,6 +40,10 @@ const devMiddleware = require('webpack-dev-middleware')(compiler, {
 	stats: {
 		colors: true,
 		chunks: false,
+		modules: false,
+		chunkModules: false,
+		children: false,
+		assets: false
 	},
 });
 
@@ -86,21 +90,8 @@ app.use(hotMiddleware);
 // var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 // app.use(express.static('./src'))
 
-// 开启服务
-const localUri = `http://localhost:${port}`;
-const networkUri = `http://${ip.address()}:${port}`;
 
-devMiddleware.waitUntilValid(() => {
-	console.log(`
-App running at:
-  - Local:   ${chalk.cyan(localUri)} (copied to clipboard)
-  - Network: ${chalk.cyan(networkUri)}
-	`);
-	// 自动打开浏览器
-	if (config.dev.autoOpenBrowser) {
-		opn(localUri);
-	}
-});
+
 
 let _resolve
 const readyPromise = new Promise(resolve => {
@@ -116,11 +107,22 @@ module.exports = new Promise((resolve, reject) => {
 				console.log(`${port}端口被占用，开启新端口${newPort}`)
 			}
 			var server = app.listen(newPort)
-			// for 小程序的文件保存机制
-			// require('webpack-dev-middleware-hard-disk')(compiler, {
-			//   publicPath: webpackConfig.output.publicPath,
-			//   quiet: true
-			// })
+			// 开启服务
+			const localUri = `http://localhost:${newPort}`;
+			const networkUri = `http://${ip.address()}:${newPort}`;
+
+			devMiddleware.waitUntilValid(() => {
+				console.log(`
+			App running at:
+				- Local:   ${chalk.cyan(localUri)} (copied to clipboard)
+				- Network: ${chalk.cyan(networkUri)}
+				`);
+
+				// 自动打开浏览器
+				if (config.dev.autoOpenBrowser) {
+					opn(localUri);
+				}
+			});
 			resolve({
 				ready: readyPromise,
 				close: () => {
