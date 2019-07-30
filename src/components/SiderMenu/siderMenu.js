@@ -53,7 +53,7 @@ export default class SiderMenu extends PureComponent {
 	};
 
 	render() {
-		const { logo, collapsed, theme, fixSiderbar, onCollapse } = this.props;
+		const { logo, collapsed, theme, fixSiderbar, onCollapse, isMobile } = this.props;
 		const { openKeys } = this.state;
 		const defaultProps = collapsed ? {} : { openKeys };
 		const siderClassName = classNames(styles.sider, {
@@ -65,7 +65,7 @@ export default class SiderMenu extends PureComponent {
 				trigger={null}
 				collapsible
 				onCollapse={collapse => {
-					if (firstMount) {
+					if (firstMount || !isMobile) {
 						onCollapse(collapse);
 					}
 				}}

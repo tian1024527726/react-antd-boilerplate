@@ -33,9 +33,9 @@ class HeaderView extends Component {
 	}
 
 	getHeadWidth = () => {
-		const { globalStore: { collapsed }, settingStore: { fixedHeader, layout } } = this.props
+		const { isMobile, globalStore: { collapsed }, settingStore: { fixedHeader, layout } } = this.props
 
-		if (!fixedHeader || layout === 'topmenu') {
+		if (!fixedHeader || layout === 'topmenu' || !isMobile) {
 			return '100%';
 		}
 		return collapsed ? 'calc(100% - 80px)' : 'calc(100% - 256px)';
@@ -89,7 +89,7 @@ class HeaderView extends Component {
 	}
 
 	render() {
-		const { userStore: { avatar }, globalStore: { collapsed }, settingStore: { fixedHeader, navTheme, layout }, globalAction: { changeLayoutCollapsed } } = this.props;
+		const { isMobile, userStore: { avatar }, globalStore: { collapsed }, settingStore: { fixedHeader, navTheme, layout }, globalAction: { changeLayoutCollapsed } } = this.props;
 		const { visible } = this.state;
 		const isTop = layout === 'topmenu';
 		const width = this.getHeadWidth();
@@ -99,7 +99,7 @@ class HeaderView extends Component {
 				style={{ padding: 0, width }}
 				className={fixedHeader ? styles.fixedHeader : ''}
 			>
-				{isTop ? (
+				{isTop && !isMobile ? (
 					<TopNavHeader
 						theme={navTheme}
 						mode="horizontal"

@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { Layout } from 'antd';
 import DocumentTitle from 'react-document-title';
+import Media from 'react-media';
 import SiderMenu from 'SiderMenu';
 import logo from '@/assets/logo.png';
 import getPageTitle from '@/utils/getPageTitle';
@@ -24,8 +25,8 @@ class BasicLayout extends React.Component {
 	}
 
 	getLayoutStyle = () => {
-		const { settingStore: { fixSiderbar, layout }, globalStore: { collapsed } } = this.props;
-		if (fixSiderbar && layout !== 'topmenu') {
+		const { isMoblile, settingStore: { fixSiderbar, layout }, globalStore: { collapsed } } = this.props;
+		if (fixSiderbar && layout !== 'topmenu' && !isMoblile) {
 			return {
 				paddingLeft: collapsed ? '80px' : '256px',
 			};
@@ -51,6 +52,7 @@ class BasicLayout extends React.Component {
 	render() {
 		const {
 			children,
+			isMobile,
 			location: { pathname },
 			globalStore: {
 				collapsed,
@@ -64,7 +66,7 @@ class BasicLayout extends React.Component {
 				fixSiderbar,
 				layout: PropsLayout,
 			},
-			globalAction:{
+			globalAction: {
 				changeLayoutCollapsed
 			}
 		} = this.props;
@@ -73,7 +75,7 @@ class BasicLayout extends React.Component {
 		const layout = (
 			<Layout>
 				{
-					isTop ? null : (<SiderMenu
+					isTop && !isMobile ? null : (<SiderMenu
 						menuData={menuData}
 						theme={navTheme}
 						contentWidth={contentWidth}
@@ -81,6 +83,7 @@ class BasicLayout extends React.Component {
 						onCollapse={changeLayoutCollapsed}
 						collapsed={collapsed}
 						fixSiderbar={fixSiderbar}
+						isMobile={isMobile}
 						breadcrumbNameMap
 						{...this.props}
 					/>)
@@ -96,6 +99,7 @@ class BasicLayout extends React.Component {
 						menuData={menuData}
 						logo={logo}
 						contentWidth={contentWidth}
+						isMobile={isMobile}
 						{...this.props}
 					/>
 					<Content className={styles.content} style={contentStyle}>
@@ -119,4 +123,8 @@ class BasicLayout extends React.Component {
 	}
 }
 
-export default BasicLayout
+export default props => (
+	<Media query="(max-width: 599px)">
+		{isMobile => <BasicLayout {...props} isMobile={isMobile} />}
+	</Media>
+)

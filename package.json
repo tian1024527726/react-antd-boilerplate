@@ -1,7 +1,7 @@
 {
 	"name": "react-antd-template",
 	"version": "1.0.0",
-	"description": "React & Koa isomorphic boilerplate",
+	"description": "React isomorphic boilerplate",
 	"author": "yyb",
 	"scripts": {
 		"start": "cross-env NODE_ENV=development node scripts/dev-server.js",
@@ -54,6 +54,7 @@
 		"react-helmet": "^5.2.0",
 		"react-intl-universal": "^1.14.3",
 		"react-loadable": "^5.3.1",
+		"react-media": "^1.9.2",
 		"react-redux": "5.0.7",
 		"react-router-dom": "4.3.1",
 		"react-router-redux": "4.0.8",
