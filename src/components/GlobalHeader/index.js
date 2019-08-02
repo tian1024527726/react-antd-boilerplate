@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { Link } from 'react-router-dom';
 import { Icon } from 'antd';
 import Debounce from 'lodash-decorators/debounce';
 import styles from './index.module.less';
@@ -22,9 +23,14 @@ export default class GlobalHeader extends PureComponent {
 		this.triggerResizeEvent();
 	};
 	render() {
-		const { collapsed } = this.props;
+		const { collapsed, isMobile, logo } = this.props;
 		return (
 			<div className={styles.header}>
+				{isMobile && (
+					<Link to="/" className={styles.logo} key="logo">
+						<img src={logo} alt="logo" width="32" />
+					</Link>
+				)}
 				<span className={styles.trigger} onClick={this.toggle}>
 					<Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} />
 				</span>
