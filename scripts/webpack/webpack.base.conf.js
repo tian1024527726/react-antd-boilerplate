@@ -86,22 +86,32 @@ const clientWebpackConfig = {
 				use: 'url-loader',
 			},
 			{
+				test: /\.pdf$/,
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							name: 'doc/[name].[ext]'
+						}
+					}
+				]
+			},
+			{
 				test: /\.(mp3)(\?.*)?$/,
-				loader: 'url-loader',
-				options: {
-					name: 'audios/[name].[ext]',
-					limit: 10,
-					fallback: 'file-loader'
-				}
+				use: [
+					{
+						loader: 'url-loader',
+						options: {
+							name: 'docs/[name].[ext]',
+							fallback: 'file-loader'
+						}
+					}
+				]
 			},
 			{
 				test: /\.html$/,
 				use: 'html-loader'
-			},
-			{
-				test: /\.json$/,
-				use: 'json-loader'
-			},
+			}
 		],
 	},
 	performance: {

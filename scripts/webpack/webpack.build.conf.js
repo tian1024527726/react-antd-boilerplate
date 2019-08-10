@@ -42,8 +42,8 @@ if (config.pwa) {
 const plugins = [
 	...pwaPlugin,
 	new MiniCssExtractPlugin({
-		filename: 'stylesheet/[name].css?[chunkhash:8]',
-		chunkFilename: 'stylesheet/[name].css?[chunkhash:8]',
+		filename: '[name].css?[contenthash:8]',
+		chunkFilename: '[name].css?[contenthash:8]',
 	}),
 	new webpack.HashedModuleIdsPlugin(),
 	new ManifestPlugin({
@@ -84,22 +84,10 @@ glob.sync(`${dllConfig.buildPath}/paReactDll*.dll.js`).forEach((dllPath) => {
 		new AddAssetHtmlPlugin({
 			filepath: dllPath,
 			includeSourcemap: false,
-			publicPath: './js',
+			publicPath: './',
 			context: process.cwd(),
-			outputPath: 'js',
-			typeOfAsset: 'js'
-		})
-	);
-});
-glob.sync(`${dllConfig.buildPath}` + '/*.dll.css').forEach((dllPath) => {
-	plugins.push(
-		new AddAssetHtmlPlugin({
-			filepath: dllPath,
-			includeSourcemap: false,
-			publicPath: './stylesheet',
-			context: process.cwd(),
-			outputPath: 'stylesheet',
-			typeOfAsset: 'css'
+			// outputPath: 'js',
+			// typeOfAsset: 'js'
 		})
 	);
 });
@@ -123,8 +111,8 @@ const clientWebpackConfig = merge(baseWebpackConfig, {
 		path: config.build.path,
 		pathinfo: true,
 		publicPath: config.build.publicPath,
-		filename: 'js/[name].js?[chunkhash:8]',
-		chunkFilename: 'js/[name].async.js?[chunkhash:8]'
+		filename: '[name].js?[chunkhash:8]',
+		chunkFilename: '[name].async.js?[chunkhash:8]'
 	},
 	optimization: {
 		minimizer: [
@@ -136,6 +124,8 @@ const clientWebpackConfig = merge(baseWebpackConfig, {
 					compress: {
 						ecma: 5,
 						warnings: false,
+						drop_debugger: true,
+            drop_console: true,
 						// turn off flags with small gains to speed up minification
 						arrows: false,
 						collapse_vars: false, // 0.3kb
